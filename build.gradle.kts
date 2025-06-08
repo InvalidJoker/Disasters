@@ -3,7 +3,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 plugins {
     kotlin("jvm") version "2.1.20"
     id("de.eldoria.plugin-yml.paper") version "0.7.1"
-    id("io.papermc.paperweight.userdev") version "2.0.0-beta.16"
+    id("io.papermc.paperweight.userdev") version "2.0.0-beta.17"
     id("com.gradleup.shadow") version "8.3.6"
     id("xyz.jpenilla.run-paper") version "2.3.1"
     kotlin("plugin.serialization") version "2.1.20"
@@ -12,13 +12,13 @@ plugins {
 group = "de.joker"
 version = "1.0-SNAPSHOT"
 
-val mcVersion = "1.21.4"
-val kUtilsVersion = "beta-0.0.1"
+val mcVersion = "1.21.5"
+val kUtilsVersion = "$mcVersion-beta-0.0.2" // Use the latest snapshot version of KUtils
 val commandAPIVersion = "10.0.1"
 
 repositories {
+    mavenLocal()
     mavenCentral()
-    maven("https://jitpack.io")
     maven("https://nexus.fruxz.dev/repository/public/") {
         content {
             includeGroup("dev.fruxz")
@@ -32,9 +32,9 @@ paperweight {
 }
 
 val shadowDependencies = listOf(
-    "com.github.InvalidJoker.KUtils:core:$kUtilsVersion",
-    "com.github.InvalidJoker.KUtils:paper:$kUtilsVersion",
-    "com.github.InvalidJoker.KUtils:paper-inventory:$kUtilsVersion",
+    "dev.invalidjoker.KUtils:core:$kUtilsVersion",
+    "dev.invalidjoker.KUtils:paper:$kUtilsVersion",
+    "dev.invalidjoker.KUtils:paper-inventory:$kUtilsVersion",
     //"com.github.InvalidJoker.KUtils:paper-commands:$kUtilsVersion",
     "dev.jorel:commandapi-bukkit-shade-mojang-mapped:$commandAPIVersion",
     "dev.jorel:commandapi-bukkit-kotlin:$commandAPIVersion",
